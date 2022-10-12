@@ -42,8 +42,9 @@ function makeWork(arrOfArr, func) {
 
 	// поиск "самого жирного" куска мяса 
 	for (let i = 0; i < arrOfArr.length; i++) {
-		if (func(arrOfArr[i]) > max) {
-			max = func(arrOfArr[i])
+		const funcResult = func(arrOfArr[i]);
+		if (funcResult > max) {
+			max = funcResult;
 		}
 	}
 	return max;
@@ -52,27 +53,19 @@ function makeWork(arrOfArr, func) {
 
 // Задание 3
 function worker2(arr) {
-	let sumMax = 0;
-	let sumMin = 0;
-	let difference;
+	let sumMax = arr[0];
+	let sumMin = arr[0];
 
-	// поиск максимального значения
+	// поиск максимальногои минимального значения
 	for (let i = 0; i < arr.length; i++) {
-		sumMax = arr[0];
 		if (arr[i] > sumMax) {
 			sumMax = arr[i];
 		}
-	}
-
-	// поиск минимального значения
-	for (let j = 0; j < arr.length; j++) {
-		sumMin = arr[0];
-		if (arr[j] < sumMin) {
-			sumMin = arr[j];
+		if (arr[i] < sumMin) {
+			sumMin = arr[i];
 		}
 	}
 
 	// разница значений
-	difference = Math.abs(sumMax - sumMin);
-	return difference;
+	return Math.abs(sumMax - sumMin);
 }
