@@ -1,3 +1,4 @@
+/* Задача № 1 */
 const sherlock = new PrintEditionItem("Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе", 2019, 1008);
 const picknick = new FantasticBook("Аркадий и Борис Стругацкие", "Пикник на обочине", 1972, 168);
 
@@ -12,6 +13,7 @@ console.log(picknick.state); //10
 picknick.fix();
 console.log(picknick.state); //15
 
+/* Задача № 2 */
 const library = new Library("Библиотека имени Ленина");
 
 library.addBook(new DetectiveBook("Артур Конан Дойл", "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе", 2019, 1008));
