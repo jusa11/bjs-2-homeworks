@@ -157,11 +157,12 @@ class Student {
 		return Average;
 	}
 
-	// расчет подсчёт общей средней оценки
+	// подсчёт общей средней оценки
 	getAverage() {
 		let result;
 		let acc = 0;
 		for (let i = 0; i < this.Subjects.length; i++) {
+			this.getAverageBySubject(this.Subjects[i].name);
 			acc = this.Subjects[i].averageMark + acc;
 		}
 		result = acc / this.Subjects.length;
