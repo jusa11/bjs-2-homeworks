@@ -2,18 +2,14 @@
 function parseCount(parseValue) {
 	let parse = parseInt(parseValue)
 	if (isNaN(parse)) {
-		const error = new Error("Невалидное значение");
-		throw error;
+		throw new Error("Невалидное значение");
 	}
 	return parse;
 }
 
 function validateCount(parseValue) {
 	try {
-		let parse = parseCount(parseValue);
-		if (parse) {
-			return parse;
-		}
+		return parseCount(parseValue);
 	} catch (error) {
 		return error;
 	}
@@ -28,23 +24,19 @@ class Triangle {
 		this.c = c;
 		this.P = null;
 		this.S = null;
-		if (this.a + this.b < this.c || this.a + this.c < this.b || this.b + this.c < this.a) {
+		if (a + b < c || a + c < b || b + c < a) {
 			throw new Error("Треугольник с такими сторонами не существует");
 		}
 	}
 
 	// периметр
 	getPerimeter() {
-		let P = this.a + this.b + this.c;
-		this.P = P;
-		return this.P;
+		return this.P = this.a + this.b + this.c;
 	}
 	// Площадь
 	getArea() {
-		let p = this.P * 0.5;
-		let S = +(Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c)).toFixed(3));
-		this.S = S;
-		return this.S;
+		return this.S = +(Math.sqrt((this.getPerimeter() * 0.5) * ((this.getPerimeter() * 0.5) - this.a) * 
+		((this.getPerimeter() * 0.5) - this.b) * ((this.getPerimeter() * 0.5) - this.c)).toFixed(3));
 	}
 	
 }
