@@ -27,7 +27,7 @@ Student.prototype.addMark = function (mark) {
 
 // добавление сразу нескольких оценок
 Student.prototype.addMarks = function (...args) {
-	if (this.marks === undefined) {
+	if (this.marks === null) {
 		this.marks = args;
 	} else {
 		this.marks.push(args)

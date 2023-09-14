@@ -1,8 +1,11 @@
 // тут вы можете вызывать функции из task.js
 
 
+
+
 const alClock = new AlarmClock();
-alClock.addClock("00:48", () => console.log("Пора вставать"), 1);
+
+alClock.addClock("22:24", () => console.log("Пора вставать"), 1);
 alClock.addClock("00:49", () => { console.log("Давай вставай уже"); alClock.removeClock(2) }, 2);
 alClock.addClock("00:49", () => console.log("Иди умываться")); // id не передан
 alClock.addClock("00:50", () => {

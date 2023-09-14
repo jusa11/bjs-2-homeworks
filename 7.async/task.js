@@ -31,7 +31,7 @@ class AlarmClock {
 	getCurrentFormattedTime() {
 		let currentTime = new Date();
 		const hours = currentTime.getHours() < 10 ? `0${currentTime.getHours()}` : `${currentTime.getHours()}`;
-    	const minutes = currentTime.getMinutes() < 10 ? `0${currentTime.getMinutes()}` : `${currentTime.getMinutes()}`;
+		const minutes = currentTime.getMinutes() < 10 ? `0${currentTime.getMinutes()}` : `${currentTime.getMinutes()}`;
 
 		return `${hours}:${minutes}`;
 	}
@@ -41,7 +41,7 @@ class AlarmClock {
 		if (this.timerId) {
 			return
 		}
-		
+
 		this.timerId = setInterval(() => {
 			this.alarmCollection.forEach(alarm => {
 				if (this.getCurrentFormattedTime() === alarm.time) {
@@ -49,7 +49,7 @@ class AlarmClock {
 				}
 			});
 		}, 1000);
-		
+
 	}
 
 	// останавливает выполнение всех звонков

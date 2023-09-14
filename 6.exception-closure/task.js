@@ -35,8 +35,8 @@ class Triangle {
 	}
 	// Площадь
 	getArea() {
-		return this.S = +(Math.sqrt((this.getPerimeter() * 0.5) * ((this.getPerimeter() * 0.5) - this.a) * 
-		((this.getPerimeter() * 0.5) - this.b) * ((this.getPerimeter() * 0.5) - this.c)).toFixed(3));
+		const p = this.getPerimeter() * 0.5;
+		return this.S = +(Math.sqrt(p  * (p - this.a) * (p - this.b) * (p - this.c))).toFixed(3);
 	}
 	
 }
@@ -55,3 +55,5 @@ function getTriangle(a, b, c) {
 		}
 	}
 }
+
+getTriangle(1,3,100);
