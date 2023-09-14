@@ -1,55 +1,41 @@
-'use strict';
+'use strict'
 function solveEquation(a, b, c) {
-	let arr = [];
-	// код для задачи №1 писать здесь
-	let d = b ** 2 - 4 * a * c
+	let d = Math.pow(b, 2) - 4 * a * c
+	if (d < 0) {
+		return []
+	}
 	if (d === 0) {
-		arr[0] = -b / (2 * a);
+		let x = -b / 2 * a
+		return [x]
 	}
-	else if (d > 0) {
-		arr[0] = (-b + Math.sqrt(d)) / (2 * a);
-		arr[1] = (-b - Math.sqrt(d)) / (2 * a);
+	if (d > 0) {
+		let x1 = (-b + Math.sqrt(d)) / (2 * a)
+		let x2 = (-b - Math.sqrt(d)) / (2 * a)
+		return [x1, x2]
 	}
-	return arr
 }
-
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
 
-	/* объявление перменных */
-	let totalAmount;
-	let S = amount - contribution; // тело кредита
-	let P = percent / 12 / 100; //  1/12 процентной ставки
-	let now = new Date(); // сегоднящняя дата 
 
-	/* Проверка на число */
-	if (!isFinite(percent)) {
-		return `Параметр "Процентная ставка" содержит неправильное значение "${percent}"`;
-	}
-	if (!isFinite(contribution)) {
-		totalAmount = `Параметр "Начальный взнос" содержит неправильное значение "${contribution}"`;
-		return totalAmount;
-	}
-	if (!isFinite(amount)) {
-		totalAmount = `Параметр "Общая стоимость" содержит неправильное значение "${amount}"`;
-		return totalAmount;
+	if (typeof percent === 'string' || typeof contribution === 'string' || typeof amount === 'string') {
+		return console.log(`Параметр ${'percent'} содержит неправильное значение ${percent}`) 
 	}
 
-	/* проверка на дату */
-	if (date.getFullYear() <= now.getFullYear()) {
-		totalAmount = 'Параметр "Срок ипотеки" не может меньше чем 1 месяц';
-		return totalAmount;
-	}
+	//  тело кредита
+	const S = amount - contribution
 
-	/* Расчет количества месяцев */
-	let n = ((date.getFullYear() - now.getFullYear()) * 12)
-		- ((12 - date.getMonth()) - (12 - now.getMonth()));
+	// срок кредита
+	const currentDate = new Date()
+	const n = ((date.getFullYear() - currentDate.getFullYear()) * 12) - (date.getMonth() - currentDate.getMonth())
 
-	/* Расчет ежемесячного платежа */
-	let payment = S * (P + (P / (((1 + P) ** n) - 1)));
+	// ежемесячный платеж
+	const P = percent / 100 / 12
+	const monthlyPayment = S * (P + (P / (((1 + P) ** n) - 1)))
 
-	/* Вывод общей стоимости ипотеки */
-	totalAmount = +(payment * n).toFixed(2);
-	return totalAmount;
+	// общая сумма кредита
+	const totalPayment = monthlyPayment * n
+	console.log(totalPayment.toFixed(2))
 }
+
 
